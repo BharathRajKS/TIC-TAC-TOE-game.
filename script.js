@@ -1,7 +1,15 @@
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const board = document.getElementById("board");
     const result = document.getElementById("result");
     const resetButton = document.getElementById("reset");
+    const clickSound = document.getElementById("clickSound");
+    const winSound = document.getElementById("winSound");
+
+    
+    
     let currentPlayer = "X";
     let boardState = ["", "", "", "", "", "", "", "", ""];
     let gameActive = true;
@@ -17,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
         [2, 4, 6]
     ];
 
-    // Handle cell click
     let handleCellClick = (e) => {
         let cell = e.target;
         let index = cell.getAttribute("data-index");
@@ -25,24 +32,23 @@ document.addEventListener("DOMContentLoaded", () => {
         if (boardState[index] !== "" || !gameActive) {
             return;
         }
+    
 
-      
         boardState[index] = currentPlayer;
         cell.textContent = currentPlayer;
+        clickSound.play(); // Play click sound
 
-  
         if (checkWinner()) {
             result.textContent = `Player ${currentPlayer} wins!`;
+            winSound.play(); // Play win sound
             gameActive = false;
         } else if (!boardState.includes("")) {
             result.textContent = "It's a draw!";
             gameActive = false;
         } else {
-     
             currentPlayer = currentPlayer === "X" ? "O" : "X";
         }
     };
-
 
     let checkWinner = () => {
         for (let i = 0; i < winningConditions.length; i++) {
@@ -54,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
     };
 
-
     let resetGame = () => {
         currentPlayer = "X";
         boardState = ["", "", "", "", "", "", "", "", ""];
@@ -65,7 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-
     board.addEventListener("click", handleCellClick);
     resetButton.addEventListener("click", resetGame);
 });
+
+
+
+
+
+
+
+

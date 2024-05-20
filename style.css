@@ -35,11 +35,12 @@ h1 {
     width: 30%;
     height: 100px;
     background-color: #fff;
-    border: 2px solid #1199ff;
+    border: 5px solid #1199ff;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 3em;
     cursor: pointer;
     transition: background-color 0.3s;
     box-sizing: border-box;
@@ -72,7 +73,7 @@ h1 {
 .result {
     margin-top: 20px;
     font-size: 1.5em;
-    color: #000000;
+    color: #ffffff;
 }
 
 button#reset {
